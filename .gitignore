@@ -1,0 +1,26 @@
+# Secretos: nunca al repositorio
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Terraform: estado y caché local
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.tfstate.lock.info
+
+# LocalStack
+volume/
+
+# Sistema
+.DS_Store
