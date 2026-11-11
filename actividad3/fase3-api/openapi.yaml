@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: API de reportes segura (Actividad 3)
+  version: 1.0.0
+  description: API simulada con autenticación JWT. Los endpoints sensibles exigen Bearer token.
+servers:
+  - url: http://localhost:3000
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /api/salud:
+    get:
+      summary: Estado del servicio (público)
+      responses: { '200': { description: OK } }
+  /api/sesion:
+    post:
+      summary: Inicia sesión y devuelve un JWT
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                usuario: { type: string, example: lector }
+                clave: { type: string, example: clave-de-prueba }
+      responses:
+        '200': { description: Token emitido }
+        '401': { description: Credenciales incorrectas }
+        '429': { description: Demasiados intentos }
+  /api/perfil:
+    get:
+      summary: Perfil del usuario autenticado
+      security: [{ bearer: [] }]
+      responses: { '200': { description: OK }, '401': { description: Sin token o token inválido } }
+  /api/usuarios:
+    get:
+      summary: Lista de usuarios (solo admin)
+      security: [{ bearer: [] }]
+      responses: { '200': { description: OK }, '401': { description: No autenticado }, '403': { description: Rol insuficiente } }
+  /api/reportes/{nombre}:
+    get:
+      summary: Lee un reporte cifrado desde S3 (solo admin)
+      security: [{ bearer: [] }]
+      parameters:
+        - { name: nombre, in: path, required: true, schema: { type: string, example: resumen.txt } }
+      responses: { '200': { description: OK }, '401': { description: No autenticado }, '403': { description: Rol insuficiente } }

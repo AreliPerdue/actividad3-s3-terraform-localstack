@@ -1,0 +1,10 @@
+# Paso intermedio: solo se cambió la base de node:14 a node:18 (Alpine), sin más cambios.
+# Sirve para comparar en Trivy contra la versión endurecida (Dockerfile).
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY src ./src
+COPY public ./public
+EXPOSE 3000
+CMD ["node", "src/servidor.js"]

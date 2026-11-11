@@ -1,0 +1,267 @@
+
+reportes-api:vulnerable (debian 10.13)
+======================================
+Total: 39 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 37, CRITICAL: 2)
+
+┌──────────────┬────────────────┬──────────┬──────────────┬─────────────────────────┬────────────────────────┬──────────────────────────────────────────────────────────────┐
+│   Library    │ Vulnerability  │ Severity │    Status    │    Installed Version    │     Fixed Version      │                            Title                             │
+├──────────────┼────────────────┼──────────┼──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ e2fsprogs    │ CVE-2022-1304  │ HIGH     │ affected     │ 1.44.5-1+deb10u3        │                        │ e2fsprogs: out-of-bounds read/write via crafted filesystem   │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2022-1304                    │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ gcc-8-base   │ CVE-2018-12886 │          │ will_not_fix │ 8.3.0-6                 │                        │ gcc: spilling of stack protection address in cfgexpand.c and │
+│              │                │          │              │                         │                        │ function.c leads to...                                       │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2018-12886                   │
+│              ├────────────────┤          │              │                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2019-15847 │          │              │                         │                        │ gcc: POWER9 "DARN" RNG intrinsic produces repeated output    │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2019-15847                   │
+├──────────────┼────────────────┤          │              ├─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libc-bin     │ CVE-2020-1751  │          │              │ 2.28-10+deb10u2         │                        │ glibc: array overflow in backtrace functions for powerpc     │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2020-1751                    │
+│              ├────────────────┤          ├──────────────┤                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2024-2961  │          │ fixed        │                         │ 2.28-10+deb10u3        │ glibc: Out of bounds write in iconv may lead to remote       │
+│              │                │          │              │                         │                        │ code...                                                      │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2024-2961                    │
+│              ├────────────────┤          │              │                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2024-33599 │          │              │                         │ 2.28-10+deb10u4        │ glibc: stack-based buffer overflow in netgroup cache         │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2024-33599                   │
+├──────────────┼────────────────┤          ├──────────────┤                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libc6        │ CVE-2020-1751  │          │ will_not_fix │                         │                        │ glibc: array overflow in backtrace functions for powerpc     │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2020-1751                    │
+│              ├────────────────┤          ├──────────────┤                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2024-2961  │          │ fixed        │                         │ 2.28-10+deb10u3        │ glibc: Out of bounds write in iconv may lead to remote       │
+│              │                │          │              │                         │                        │ code...                                                      │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2024-2961                    │
+│              ├────────────────┤          │              │                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2024-33599 │          │              │                         │ 2.28-10+deb10u4        │ glibc: stack-based buffer overflow in netgroup cache         │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2024-33599                   │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libcom-err2  │ CVE-2022-1304  │          │ affected     │ 1.44.5-1+deb10u3        │                        │ e2fsprogs: out-of-bounds read/write via crafted filesystem   │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2022-1304                    │
+├──────────────┼────────────────┼──────────┼──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libdb5.3     │ CVE-2019-8457  │ CRITICAL │ will_not_fix │ 5.3.28+dfsg1-0.5        │                        │ sqlite: heap out-of-bound read in function rtreenode()       │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2019-8457                    │
+├──────────────┼────────────────┼──────────┼──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libext2fs2   │ CVE-2022-1304  │ HIGH     │ affected     │ 1.44.5-1+deb10u3        │                        │ e2fsprogs: out-of-bounds read/write via crafted filesystem   │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2022-1304                    │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libgcc1      │ CVE-2018-12886 │          │ will_not_fix │ 1:8.3.0-6               │                        │ gcc: spilling of stack protection address in cfgexpand.c and │
+│              │                │          │              │                         │                        │ function.c leads to...                                       │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2018-12886                   │
+│              ├────────────────┤          │              │                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2019-15847 │          │              │                         │                        │ gcc: POWER9 "DARN" RNG intrinsic produces repeated output    │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2019-15847                   │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libgcrypt20  │ CVE-2021-33560 │          │ affected     │ 1.8.4-5+deb10u1         │                        │ libgcrypt: mishandles ElGamal encryption because it lacks    │
+│              │                │          │              │                         │                        │ exponent blinding to address a...                            │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2021-33560                   │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libgnutls30  │ CVE-2024-0553  │          │ fixed        │ 3.6.7-4+deb10u10        │ 3.6.7-4+deb10u12       │ gnutls: incomplete fix for CVE-2023-5981                     │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2024-0553                    │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libidn2-0    │ CVE-2019-12290 │          │ affected     │ 2.0.5-1+deb10u1         │                        │ GNU libidn2 before 2.2.0 fails to perform the roundtrip      │
+│              │                │          │              │                         │                        │ checks specifi ......                                        │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2019-12290                   │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libncursesw6 │ CVE-2021-39537 │          │ fixed        │ 6.1+20181013-2+deb10u3  │ 6.1+20181013-2+deb10u5 │ ncurses: heap-based buffer overflow in _nc_captoinfo() in    │
+│              │                │          │              │                         │                        │ captoinfo.c                                                  │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2021-39537                   │
+│              ├────────────────┤          │              │                         │                        ├──────────────────────────────────────────────────────────────┤
+│              │ CVE-2023-29491 │          │              │                         │                        │ ncurses: Local users can trigger security-relevant memory    │
+│              │                │          │              │                         │                        │ corruption via malformed data                                │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2023-29491                   │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libss2       │ CVE-2022-1304  │          │ affected     │ 1.44.5-1+deb10u3        │                        │ e2fsprogs: out-of-bounds read/write via crafted filesystem   │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2022-1304                    │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libstdc++6   │ CVE-2018-12886 │          │ will_not_fix │ 8.3.0-6                 │                        │ gcc: spilling of stack protection address in cfgexpand.c and │
+│              │                │          │              │                         │                        │ function.c leads to...                                       │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2018-12886                   │
+│              ├────────────────┤          │              │                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2019-15847 │          │              │                         │                        │ gcc: POWER9 "DARN" RNG intrinsic produces repeated output    │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2019-15847                   │
+├──────────────┼────────────────┤          │              ├─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libsystemd0  │ CVE-2019-3843  │          │              │ 241-7~deb10u9           │                        │ systemd: services with DynamicUser can create SUID/SGID      │
+│              │                │          │              │                         │                        │ binaries                                                     │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2019-3843                    │
+│              ├────────────────┤          │              │                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2019-3844  │          │              │                         │                        │ systemd: services with DynamicUser can get new privileges    │
+│              │                │          │              │                         │                        │ and create SGID binaries...                                  │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2019-3844                    │
+│              ├────────────────┤          ├──────────────┤                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2023-50387 │          │ affected     │                         │                        │ bind9: KeyTrap - Extreme CPU consumption in DNSSEC validator │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2023-50387                   │
+│              ├────────────────┤          │              │                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2023-50868 │          │              │                         │                        │ bind9: Preparing an NSEC3 closest encloser proof can exhaust │
+│              │                │          │              │                         │                        │ CPU resources                                                │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2023-50868                   │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libtinfo6    │ CVE-2021-39537 │          │ fixed        │ 6.1+20181013-2+deb10u3  │ 6.1+20181013-2+deb10u5 │ ncurses: heap-based buffer overflow in _nc_captoinfo() in    │
+│              │                │          │              │                         │                        │ captoinfo.c                                                  │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2021-39537                   │
+│              ├────────────────┤          │              │                         │                        ├──────────────────────────────────────────────────────────────┤
+│              │ CVE-2023-29491 │          │              │                         │                        │ ncurses: Local users can trigger security-relevant memory    │
+│              │                │          │              │                         │                        │ corruption via malformed data                                │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2023-29491                   │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ libudev1     │ CVE-2019-3843  │          │ will_not_fix │ 241-7~deb10u9           │                        │ systemd: services with DynamicUser can create SUID/SGID      │
+│              │                │          │              │                         │                        │ binaries                                                     │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2019-3843                    │
+│              ├────────────────┤          │              │                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2019-3844  │          │              │                         │                        │ systemd: services with DynamicUser can get new privileges    │
+│              │                │          │              │                         │                        │ and create SGID binaries...                                  │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2019-3844                    │
+│              ├────────────────┤          ├──────────────┤                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2023-50387 │          │ affected     │                         │                        │ bind9: KeyTrap - Extreme CPU consumption in DNSSEC validator │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2023-50387                   │
+│              ├────────────────┤          │              │                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2023-50868 │          │              │                         │                        │ bind9: Preparing an NSEC3 closest encloser proof can exhaust │
+│              │                │          │              │                         │                        │ CPU resources                                                │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2023-50868                   │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ncurses-base │ CVE-2021-39537 │          │ fixed        │ 6.1+20181013-2+deb10u3  │ 6.1+20181013-2+deb10u5 │ ncurses: heap-based buffer overflow in _nc_captoinfo() in    │
+│              │                │          │              │                         │                        │ captoinfo.c                                                  │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2021-39537                   │
+│              ├────────────────┤          │              │                         │                        ├──────────────────────────────────────────────────────────────┤
+│              │ CVE-2023-29491 │          │              │                         │                        │ ncurses: Local users can trigger security-relevant memory    │
+│              │                │          │              │                         │                        │ corruption via malformed data                                │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2023-29491                   │
+├──────────────┼────────────────┤          │              │                         │                        ├──────────────────────────────────────────────────────────────┤
+│ ncurses-bin  │ CVE-2021-39537 │          │              │                         │                        │ ncurses: heap-based buffer overflow in _nc_captoinfo() in    │
+│              │                │          │              │                         │                        │ captoinfo.c                                                  │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2021-39537                   │
+│              ├────────────────┤          │              │                         │                        ├──────────────────────────────────────────────────────────────┤
+│              │ CVE-2023-29491 │          │              │                         │                        │ ncurses: Local users can trigger security-relevant memory    │
+│              │                │          │              │                         │                        │ corruption via malformed data                                │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2023-29491                   │
+├──────────────┼────────────────┤          ├──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ perl-base    │ CVE-2020-16156 │          │ affected     │ 5.28.1-6+deb10u1        │                        │ perl-CPAN: Bypass of verification of signatures in CHECKSUMS │
+│              │                │          │              │                         │                        │ files                                                        │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2020-16156                   │
+│              ├────────────────┤          │              │                         ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│              │ CVE-2023-31484 │          │              │                         │                        │ perl: CPAN.pm does not verify TLS certificates when          │
+│              │                │          │              │                         │                        │ downloading distributions over HTTPS...                      │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2023-31484                   │
+├──────────────┼────────────────┼──────────┼──────────────┼─────────────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ zlib1g       │ CVE-2023-45853 │ CRITICAL │ will_not_fix │ 1:1.2.11.dfsg-1+deb10u2 │                        │ zlib: integer overflow and resultant heap-based buffer       │
+│              │                │          │              │                         │                        │ overflow in zipOpenNewFileInZip4_6                           │
+│              │                │          │              │                         │                        │ https://avd.aquasec.com/nvd/cve-2023-45853                   │
+└──────────────┴────────────────┴──────────┴──────────────┴─────────────────────────┴────────────────────────┴──────────────────────────────────────────────────────────────┘
+
+Node.js (node-pkg)
+==================
+Total: 29 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 27, CRITICAL: 2)
+
+┌─────────────────────────────────────┬─────────────────┬──────────┬──────────┬───────────────────┬─────────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────┐
+│               Library               │  Vulnerability  │ Severity │  Status  │ Installed Version │                      Fixed Version                      │                            Title                             │
+├─────────────────────────────────────┼─────────────────┼──────────┼──────────┼───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ansi-regex (package.json)           │ CVE-2021-3807   │ HIGH     │ fixed    │ 3.0.0             │ 6.0.1, 5.0.1, 4.1.1, 3.0.1                              │ nodejs-ansi-regex: Regular expression denial of service      │
+│                                     │                 │          │          │                   │                                                         │ (ReDoS) matching ANSI escape codes                           │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2021-3807                    │
+│                                     │                 │          │          ├───────────────────┤                                                         │                                                              │
+│                                     │                 │          │          │ 4.1.0             │                                                         │                                                              │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+├─────────────────────────────────────┼─────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ brace-expansion (package.json)      │ CVE-2026-102276 │          │          │ 1.1.11            │ 5.0.10, 3.0.7, 2.1.5, 1.1.19                            │ brace-expansion: brace-expansion: Denial of Service via      │
+│                                     │                 │          │          │                   │                                                         │ stack exhaustion from crafted brace patterns...              │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-102276                  │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-102278 │          │          │                   │ 5.0.11, 3.0.8, 2.1.6, 1.1.20                            │ brace-expansion: brace-expansion: Denial of Service via      │
+│                                     │                 │          │          │                   │                                                         │ uncontrolled recursion in nested brace patterns...           │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-102278                  │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-13149  │          │          │                   │ 5.0.7, 1.1.16, 2.1.2                                    │ brace-expansion: Brace-expansion: Denial of Service due to   │
+│                                     │                 │          │          │                   │                                                         │ exponential-time complexity                                  │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-13149                   │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-14257  │          │          │                   │ 5.0.8, 3.0.3, 2.1.3, 1.1.17                             │ brace-expansion: Brace-expansion: Denial of Service via      │
+│                                     │                 │          │          │                   │                                                         │ memory exhaustion in expand() function                       │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-14257                   │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-69152  │          │          │                   │ 1.1.18, 2.1.4, 3.0.6, 5.0.9                             │ brace-expansion: DoS via unbounded intermediate arrays,      │
+│                                     │                 │          │          │                   │                                                         │ bypassing the CVE-2026-14257 mitigation                      │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-69152                   │
+├─────────────────────────────────────┼─────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ cross-spawn (package.json)          │ CVE-2024-21538  │          │          │ 5.1.0             │ 7.0.5, 6.0.6                                            │ cross-spawn: regular expression denial of service            │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2024-21538                   │
+├─────────────────────────────────────┼─────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ decode-uri-component (package.json) │ CVE-2026-118664 │          │          │ 0.2.2             │ 0.5.1                                                   │ decode-uri-component: decode-uri-component: Denial of        │
+│                                     │                 │          │          │                   │                                                         │ Service via malformed percent-encoded input                  │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-118664                  │
+├─────────────────────────────────────┼─────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ form-data (package.json)            │ CVE-2025-7783   │ CRITICAL │          │ 2.3.3             │ 2.5.4, 3.0.4, 4.0.4                                     │ form-data: Unsafe random function in form-data               │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2025-7783                    │
+│                                     ├─────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-12143  │ HIGH     │          │                   │ 2.5.6, 3.0.5, 4.0.6                                     │ form-data: form-data: Form field override via CRLF injection │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-12143                   │
+├─────────────────────────────────────┼─────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ http-cache-semantics (package.json) │ CVE-2022-25881  │          │          │ 3.8.1             │ 4.1.1                                                   │ http-cache-semantics: Regular Expression Denial of Service   │
+│                                     │                 │          │          │                   │                                                         │ (ReDoS) vulnerability                                        │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-25881                   │
+├─────────────────────────────────────┼─────────────────┤          ├──────────┼───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ip (package.json)                   │ CVE-2024-29415  │          │ affected │ 1.1.5             │                                                         │ node-ip: Incomplete fix for CVE-2023-42282                   │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2024-29415                   │
+├─────────────────────────────────────┼─────────────────┤          ├──────────┼───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ minimatch (package.json)            │ CVE-2026-26996  │          │ fixed    │ 3.1.2             │ 10.2.1, 9.0.6, 8.0.5, 7.4.7, 6.2.1, 5.1.7, 4.2.4, 3.1.3 │ minimatch: minimatch: Denial of Service via specially        │
+│                                     │                 │          │          │                   │                                                         │ crafted glob patterns                                        │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-26996                   │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-27903  │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.3 │ minimatch: minimatch: Denial of Service due to unbounded     │
+│                                     │                 │          │          │                   │                                                         │ recursive backtracking via crafted...                        │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27903                   │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-27904  │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.4 │ minimatch: Minimatch: Denial of Service via catastrophic     │
+│                                     │                 │          │          │                   │                                                         │ backtracking in glob expressions                             │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27904                   │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+│                                     │                 │          │          │                   │                                                         │                                                              │
+├─────────────────────────────────────┼─────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ semver (package.json)               │ CVE-2022-25883  │          │          │ 5.7.1             │ 7.5.2, 6.3.1, 5.7.2                                     │ nodejs-semver: Regular expression denial of service          │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-25883                   │
+├─────────────────────────────────────┼─────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ tar (package.json)                  │ CVE-2026-59873  │ CRITICAL │          │ 4.4.19            │ 7.5.19                                                  │ tar: node-tar: Denial of Service via crafted gzip bomb       │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-59873                   │
+│                                     ├─────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-23745  │ HIGH     │          │                   │ 7.5.3                                                   │ node-tar: tar: node-tar: Arbitrary file overwrite and        │
+│                                     │                 │          │          │                   │                                                         │ symlink poisoning via unsanitized linkpaths...               │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-23745                   │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-23950  │          │          │                   │ 7.5.4                                                   │ node-tar: tar: node-tar: Arbitrary file overwrite via        │
+│                                     │                 │          │          │                   │                                                         │ Unicode path collision race condition...                     │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-23950                   │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-24842  │          │          │                   │ 7.5.7                                                   │ node-tar: tar: node-tar: Arbitrary file creation via path    │
+│                                     │                 │          │          │                   │                                                         │ traversal bypass in hardlink...                              │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-24842                   │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-26960  │          │          │                   │ 7.5.8                                                   │ node-tar: node-tar: Arbitrary file read/write via malicious  │
+│                                     │                 │          │          │                   │                                                         │ archive hardlink creation                                    │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-26960                   │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-29786  │          │          │                   │ 7.5.10                                                  │ node-tar: hardlink path traversal via drive-relative         │
+│                                     │                 │          │          │                   │                                                         │ linkpath                                                     │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-29786                   │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-31802  │          │          │                   │ 7.5.11                                                  │ tar: tar: File overwrite via drive-relative symlink          │
+│                                     │                 │          │          │                   │                                                         │ traversal                                                    │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-31802                   │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-59874  │          │          │                   │ 7.5.18                                                  │ tar: Node-tar: Denial of Service via malformed tar archive   │
+│                                     │                 │          │          │                   │                                                         │ header                                                       │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-59874                   │
+│                                     ├─────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-73566  │          │          │                   │ 7.5.21                                                  │ tar: node-tar: Denial of Service via crafted long-path tar   │
+│                                     │                 │          │          │                   │                                                         │ archive                                                      │
+│                                     │                 │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-73566                   │
+└─────────────────────────────────────┴─────────────────┴──────────┴──────────┴───────────────────┴─────────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────┘

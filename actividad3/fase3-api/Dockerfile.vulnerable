@@ -1,0 +1,11 @@
+# Versión INICIAL (vulnerable) — solo para el escaneo con Trivy, no para producción.
+# node:14 (variante slim, por espacio en disco) llegó a fin de soporte en abril de 2023 y su base Debian 10 ya no recibe parches.
+FROM node:14-slim
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY src ./src
+COPY public ./public
+EXPOSE 3000
+# Corre como root y sin healthcheck
+CMD ["node", "src/servidor.js"]

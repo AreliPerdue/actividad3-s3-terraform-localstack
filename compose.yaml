@@ -9,7 +9,7 @@ services:
       # Solo localhost: el puerto 4566 no queda expuesto a la red.
       - "127.0.0.1:4566:4566"
     environment:
-      - SERVICES=s3
+      - SERVICES=s3,iam,sts
       - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN:?Define LOCALSTACK_AUTH_TOKEN en el archivo .env}
       - DEBUG=0
     healthcheck:

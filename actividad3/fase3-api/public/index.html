@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reportes seguros · Actividad 3</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <div class="marca">🔐 Reportes seguros</div>
+    <div id="sesion" class="oculto">
+      <span id="quien"></span>
+      <button id="salir" class="secundario">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Inicio de sesión -->
+    <section id="vista-login" class="tarjeta">
+      <h1>Iniciar sesión</h1>
+      <p class="sub">La API devuelve un JWT firmado (HS256) que dura 15 minutos.</p>
+      <form id="form-login" autocomplete="off">
+        <label>Usuario <input id="usuario" name="usuario" required maxlength="40"></label>
+        <label>Contraseña <input id="clave" name="clave" type="password" required maxlength="100"></label>
+        <button type="submit">Entrar</button>
+      </form>
+      <p id="msg-login" class="mensaje" role="alert"></p>
+    </section>
+
+    <!-- Panel con sesión -->
+    <section id="vista-panel" class="oculto">
+      <div class="tarjeta">
+        <h2>Mi perfil <code>GET /api/perfil</code></h2>
+        <pre id="perfil"></pre>
+      </div>
+      <div class="tarjeta">
+        <h2>Usuarios <code>GET /api/usuarios</code> <span class="etiqueta">solo admin</span></h2>
+        <button id="ver-usuarios">Consultar</button>
+        <p id="estado-usuarios" class="mensaje"></p>
+        <pre id="usuarios"></pre>
+      </div>
+      <div class="tarjeta">
+        <h2>Reporte cifrado en S3 <code>GET /api/reportes/resumen.txt</code> <span class="etiqueta">solo admin</span></h2>
+        <button id="ver-reporte">Leer reporte</button>
+        <p id="estado-reporte" class="mensaje"></p>
+        <pre id="reporte"></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>Actividad 3 · Ciberseguridad · API simulada en <code>localhost</code> con LocalStack</footer>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,4 +1,17 @@
-# Actividad 3 · Bucket S3 seguro con Terraform + LocalStack
+# Actividad 3 · Ciberseguridad (Terraform + LocalStack)
+
+Este repositorio tiene dos partes:
+
+1. **[Actividad 3](actividad3/README.md)** (carpeta `actividad3/`): bucket S3 cifrado con política explícita
+   (`script.tf`), escaneo de contenedores con Trivy (node:14 → node:18 sin vulnerabilidades críticas), API con
+   autenticación JWT y sitio web probados con curl y OWASP ZAP, rol IAM de mínimo privilegio y diagrama de arquitectura.
+2. **Práctica en clase** (raíz del repo, descrita abajo): el laboratorio base de LocalStack con S3.
+
+`compose.yaml` levanta LocalStack con S3, IAM y STS para ambas partes.
+
+---
+
+## Práctica en clase · Bucket S3 seguro con Terraform + LocalStack
 
 Laboratorio de **Infraestructura como Código (IaC)**: con Terraform se declara un bucket S3
 **simulado** en LocalStack, con cifrado **SSE-S3 (AES-256)** y los **cuatro controles** de

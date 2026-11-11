@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2b2a4a"/>
+    </marker>
+    <marker id="fr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c62f45"/>
+    </marker>
+    <style>
+      .t{font-size:17px;font-weight:700;fill:#1f1b2e}
+      .s{font-size:13px;fill:#4a4560}
+      .n{font-size:13px;font-weight:700;fill:#fff}
+      .zona{font-size:14px;font-weight:700;letter-spacing:.06em}
+      .flujo{stroke:#2b2a4a;stroke-width:2.2;fill:none;marker-end:url(#f)}
+      .rechazo{stroke:#c62f45;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#fr)}
+    </style>
+  </defs>
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <text x="600" y="40" text-anchor="middle" font-size="24" font-weight="700" fill="#1f1b2e">Arquitectura segura · Actividad 3 (simulada en LocalStack)</text>
+  <text x="600" y="64" text-anchor="middle" class="s">Flujo de datos de una consulta de reporte: navegador → contenedor (sitio + API con JWT) → rol IAM → bucket S3 cifrado</text>
+
+  <!-- Zona usuario -->
+  <rect x="30" y="100" width="230" height="560" rx="16" fill="#f4f1fb" stroke="#cfc6ee"/>
+  <text x="145" y="128" text-anchor="middle" class="zona" fill="#6a3df0">USUARIO</text>
+  <rect x="55" y="250" width="180" height="150" rx="14" fill="#fff" stroke="#6a3df0" stroke-width="2"/>
+  <text x="145" y="285" text-anchor="middle" class="t">Navegador</text>
+  <text x="145" y="308" text-anchor="middle" class="s">Sitio web (login y panel)</text>
+  <text x="145" y="328" text-anchor="middle" class="s">Token solo en memoria</text>
+  <text x="145" y="348" text-anchor="middle" class="s">textContent (sin HTML</text>
+  <text x="145" y="366" text-anchor="middle" class="s">inyectado)</text>
+
+  <!-- Zona contenedor -->
+  <rect x="300" y="100" width="420" height="560" rx="16" fill="#eef6ff" stroke="#b9d3f2"/>
+  <text x="510" y="128" text-anchor="middle" class="zona" fill="#1f6fd1">CONTENEDOR DOCKER · reportes-api:1.0</text>
+  <text x="510" y="148" text-anchor="middle" class="s">node:18-alpine · usuario node · solo lectura · sin capacidades · Trivy: 0 críticas</text>
+
+  <rect x="330" y="170" width="360" height="70" rx="12" fill="#fff" stroke="#1f6fd1" stroke-width="2"/>
+  <text x="510" y="198" text-anchor="middle" class="t">Express + helmet</text>
+  <text x="520" y="220" text-anchor="middle" class="s">Sirve el sitio y la API · cabeceras de seguridad · límite de intentos</text>
+
+  <rect x="330" y="265" width="360" height="110" rx="12" fill="#fff" stroke="#6a3df0" stroke-width="2.5"/>
+  <text x="510" y="293" text-anchor="middle" class="t">Autenticación JWT</text>
+  <text x="510" y="315" text-anchor="middle" class="s">POST /api/sesion → token HS256 (15 min, iss/aud)</text>
+  <text x="510" y="335" text-anchor="middle" class="s">verificarToken: firma, algoritmo, emisor, expiración</text>
+  <text x="510" y="355" text-anchor="middle" class="s">exigirRol('admin') → 403 si el rol no alcanza</text>
+
+  <rect x="330" y="400" width="360" height="110" rx="12" fill="#fff" stroke="#1f6fd1" stroke-width="2"/>
+  <text x="510" y="428" text-anchor="middle" class="t">Endpoints sensibles</text>
+  <text x="510" y="450" text-anchor="middle" class="s">GET /api/perfil · GET /api/usuarios</text>
+  <text x="510" y="470" text-anchor="middle" class="s">GET /api/reportes/:nombre</text>
+  <text x="510" y="490" text-anchor="middle" class="s">(lee S3 con credenciales temporales del rol)</text>
+
+  <rect x="330" y="540" width="360" height="90" rx="12" fill="#fff6e8" stroke="#d98b00" stroke-width="2"/>
+  <text x="510" y="568" text-anchor="middle" class="t">Secretos fuera del código</text>
+  <text x="510" y="590" text-anchor="middle" class="s">JWT_SECRETO y claves por variables de entorno (.env)</text>
+  <text x="510" y="610" text-anchor="middle" class="s">contraseñas guardadas con hash scrypt</text>
+
+  <!-- Zona AWS -->
+  <rect x="760" y="100" width="410" height="560" rx="16" fill="#f0faf5" stroke="#b5e0c9"/>
+  <text x="965" y="128" text-anchor="middle" class="zona" fill="#12805c">AWS (LocalStack :4566)</text>
+
+  <rect x="790" y="170" width="350" height="120" rx="12" fill="#fff" stroke="#12805c" stroke-width="2"/>
+  <text x="965" y="198" text-anchor="middle" class="t">STS + IAM</text>
+  <text x="965" y="220" text-anchor="middle" class="s">rol-lector-reportes</text>
+  <text x="965" y="240" text-anchor="middle" class="s">política: solo s3:GetObject</text>
+  <text x="965" y="260" text-anchor="middle" class="s">en reportes/* (mínimo privilegio)</text>
+
+  <rect x="790" y="330" width="350" height="200" rx="12" fill="#fff" stroke="#12805c" stroke-width="2.5"/>
+  <text x="965" y="358" text-anchor="middle" class="t">Bucket S3</text>
+  <text x="965" y="378" text-anchor="middle" class="s">actividad3-reportes-cifrados</text>
+  <text x="965" y="404" text-anchor="middle" class="s">Cifrado en reposo AES-256 (SSE-S3)</text>
+  <text x="965" y="424" text-anchor="middle" class="s">Bloqueo de acceso público ×4</text>
+  <text x="965" y="444" text-anchor="middle" class="s">Política: niega acceso externo y sin HTTPS</text>
+  <text x="965" y="464" text-anchor="middle" class="s">Versionado activado</text>
+  <text x="965" y="490" text-anchor="middle" class="s" font-weight="700">IsPublic: false</text>
+
+  <rect x="790" y="560" width="350" height="70" rx="12" fill="#fff" stroke="#8a8aa0" stroke-dasharray="5 4"/>
+  <text x="965" y="588" text-anchor="middle" class="t">Terraform (IaC)</text>
+  <text x="965" y="610" text-anchor="middle" class="s">script.tf e iam.tf crean bucket, rol y política</text>
+  <path d="M965 560 V 532" class="flujo" stroke-dasharray="4 4"/>
+
+  <!-- Flujos -->
+  <path d="M235 290 C 280 290, 290 190, 330 190" class="flujo"/>
+  <circle cx="282" cy="250" r="13" fill="#2b2a4a"/><text x="282" y="255" text-anchor="middle" class="n">1</text>
+
+  <path d="M235 320 C 290 320, 290 320, 330 320" class="flujo"/>
+  <circle cx="282" cy="320" r="13" fill="#2b2a4a"/><text x="282" y="325" text-anchor="middle" class="n">2</text>
+
+  <path d="M510 375 V 400" class="flujo"/>
+  <circle cx="530" cy="388" r="13" fill="#2b2a4a"/><text x="530" y="393" text-anchor="middle" class="n">3</text>
+
+  <path d="M690 440 C 740 440, 740 230, 790 230" class="flujo"/>
+  <circle cx="740" cy="335" r="13" fill="#2b2a4a"/><text x="740" y="340" text-anchor="middle" class="n">4</text>
+
+  <path d="M690 475 C 740 475, 750 430, 790 430" class="flujo"/>
+  <circle cx="752" cy="455" r="13" fill="#2b2a4a"/><text x="752" y="460" text-anchor="middle" class="n">5</text>
+
+  <path d="M330 300 C 280 330, 250 380, 235 380" class="rechazo"/>
+  <text x="145" y="440" text-anchor="middle" class="s" fill="#c62f45" font-weight="700">401 / 403</text>
+  <text x="145" y="460" text-anchor="middle" class="s" fill="#c62f45">sin token, token inválido</text>
+  <text x="145" y="478" text-anchor="middle" class="s" fill="#c62f45">o rol insuficiente</text>
+
+  <!-- Leyenda -->
+  <rect x="30" y="680" width="1140" height="64" rx="12" fill="#fafafa" stroke="#e3e3ea"/>
+  <text x="50" y="705" class="s"><tspan font-weight="700">1</tspan> El navegador carga el sitio desde el contenedor.  <tspan font-weight="700">2</tspan> Inicia sesión y envía el JWT como Bearer.  <tspan font-weight="700">3</tspan> El middleware valida token y rol.</text>
+  <text x="50" y="728" class="s"><tspan font-weight="700">4</tspan> La API asume rol-lector-reportes con STS.  <tspan font-weight="700">5</tspan> Con esas credenciales temporales lee el objeto cifrado de S3 (s3:GetObject) y responde al navegador.</text>
+</svg>

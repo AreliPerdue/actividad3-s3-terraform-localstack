@@ -24,3 +24,6 @@ volume/
 
 # Sistema
 .DS_Store
+
+# Node
+node_modules/

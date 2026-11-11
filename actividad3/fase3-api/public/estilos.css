@@ -1,0 +1,29 @@
+:root {
+  --fondo: #f4f1fb; --tarjeta: #ffffff; --texto: #1f1b2e; --suave: #6b6585;
+  --acento: #6a3df0; --ok: #12805c; --error: #c62f45; --borde: #e3ddf3;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--fondo); color: var(--texto); }
+header { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 24px; background: #1f1b2e; color: #fff; }
+.marca { font-weight: 700; font-size: 1.1rem; }
+#sesion { display: flex; align-items: center; gap: 12px; font-size: .9rem; }
+main { max-width: 820px; margin: 28px auto; padding: 0 16px; display: grid; gap: 16px; }
+.tarjeta { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; padding: 20px 22px; box-shadow: 0 2px 10px #1f1b2e10; }
+#vista-panel { display: grid; gap: 16px; }
+h1, h2 { margin: 0 0 6px; }
+h2 { font-size: 1.05rem; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.sub { color: var(--suave); margin: 0 0 14px; }
+form { display: grid; gap: 12px; max-width: 360px; }
+label { display: grid; gap: 4px; font-weight: 600; font-size: .9rem; }
+input { font: inherit; padding: 9px 11px; border: 1px solid var(--borde); border-radius: 9px; }
+button { font: inherit; font-weight: 600; cursor: pointer; padding: 9px 16px; border-radius: 9px; border: 0; background: var(--acento); color: #fff; justify-self: start; }
+button.secundario { background: #ffffff22; border: 1px solid #ffffff55; }
+code { font: .8rem ui-monospace, Menlo, monospace; background: #efeaff; color: var(--acento); padding: 2px 6px; border-radius: 6px; }
+.etiqueta { font-size: .72rem; background: #fde9ec; color: var(--error); padding: 2px 8px; border-radius: 99px; }
+pre { background: #1f1b2e; color: #e9e5ff; padding: 12px 14px; border-radius: 10px; overflow-x: auto; font-size: .85rem; min-height: 1em; margin: 10px 0 0; }
+pre:empty { display: none; }
+.mensaje { margin: 10px 0 0; font-weight: 600; }
+.mensaje.ok { color: var(--ok); }
+.mensaje.error { color: var(--error); }
+.oculto { display: none !important; }
+footer { text-align: center; color: var(--suave); font-size: .8rem; padding: 24px; }
