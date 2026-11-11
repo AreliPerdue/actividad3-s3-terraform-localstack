@@ -37,8 +37,16 @@ Terraform  ──►  LocalStack :4566 (Docker, solo localhost)  ──►  Buck
 | AWS CLI v2 | 2.34 | `aws --version` |
 | Cuenta LocalStack **Hobby (gratis)** | — | token en [app.localstack.cloud](https://app.localstack.cloud) |
 
-En macOS: Docker Desktop desde [docker.com](https://docs.docker.com/desktop/), y con Homebrew
+En macOS: Docker Desktop desde [docker.com](https://docs.docker.com/desktop/setup/install/mac-install/), y con Homebrew
 `brew install hashicorp/tap/terraform awscli`.
+
+| Sistema | Docker | Virtualización | Permisos |
+|---|---|---|---|
+| Windows 10/11 | Docker Desktop + WSL2 | Activar VT-x/AMD-V en BIOS | Administrador para instalar |
+| macOS | Docker Desktop (Apple silicon o Intel, ≥ 4 GB RAM) | Framework de macOS, nada que activar | Usuario admin; sin grupo `docker` |
+| Linux | Docker Engine + Compose (APT) | Nativa | Agregar usuario al grupo `docker` y volver a iniciar sesión |
+
+Probado en una MacBook Air M2 (arm64, 8 GB, macOS 26.6). La imagen de LocalStack es `linux/arm64`, nativa.
 
 ## Cómo ejecutarlo
 
@@ -121,10 +129,12 @@ La descarga **sin firmar** del objeto funcionó (`aws --no-sign-request` y `curl
 contenido, HTTP 200), aunque los cuatro controles de bloqueo están en `true`.
 
 En AWS real esta solicitud se rechazaría con `403 AccessDenied`: el bucket no tiene ninguna
-política ni ACL que dé acceso a usuarios anónimos. LocalStack, en cambio, **no evalúa IAM ni
-las políticas de acceso por defecto** (para eso existe `ENFORCE_IAM=1`, que es opcional y
-parcial): emula la API y guarda la configuración, pero no hace cumplir todas las reglas de
-autorización. Por eso este resultado se trata como una **limitación del simulador**, no como
+política ni ACL que dé acceso a usuarios anónimos. En LocalStack, según su
+[documentación](https://docs.localstack.cloud/aws/capabilities/security-testing/iam-policy-enforcement/),
+**la aplicación de IAM está desactivada por defecto** y todas las APIs se pueden usar sin
+autenticación. Se activa con `ENFORCE_IAM=1`, pero esa función es de los planes Base y Ultimate,
+no del Hobby. LocalStack emula la API y guarda la configuración, pero no hace cumplir las reglas
+de autorización. Por eso este resultado se trata como una **limitación del simulador**, no como
 una exposición real, hasta tener una validación independiente.
 
 ### `NoSuchBucketPolicy`
