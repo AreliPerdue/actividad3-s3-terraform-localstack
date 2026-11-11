@@ -1,0 +1,13 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % docker compose ps
+NAME                    IMAGE                          COMMAND                  SERVICE      CREATED          STATUS                    PORTS
+localstack-actividad3   localstack/localstack:latest   "docker-entrypoint.sh"   localstack   29 seconds ago   Up 28 seconds (healthy)   127.0.0.1:4566->4566/tcp
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % docker ps --filter name=localstack --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+NAMES                   STATUS                    PORTS
+localstack-actividad3   Up 29 seconds (healthy)   127.0.0.1:4566->4566/tcp
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % curl -s http://localhost:4566/_localstack/health | python3 -m json.tool | grep -E "\"(s3|edition|version)\""
+        "s3": "available",
+    "edition": "pro",
+    "version": "2026.10.6"
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % lsof -nP -iTCP:4566 -sTCP:LISTEN
+COMMAND     PID  USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+com.docke 77029 Areli   90u  IPv4 0x812ea1ecd88ebef1      0t0  TCP 127.0.0.1:4566 (LISTEN)

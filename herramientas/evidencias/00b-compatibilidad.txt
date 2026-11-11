@@ -1,0 +1,15 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % sw_vers
+ProductName:		macOS
+ProductVersion:		26.6.2
+BuildVersion:		25G83
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % uname -m && sysctl -n machdep.cpu.brand_string
+arm64
+Apple M2
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % echo "RAM: $(( $(sysctl -n hw.memsize) / 1073741824 )) GB"
+RAM: 8 GB
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % sysctl -n kern.hv_support
+1
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % docker info --format "VM de Docker: {{.OperatingSystem}} | arquitectura: {{.Architecture}} | CPUs: {{.NCPU}} | memoria: {{.MemTotal}}"
+VM de Docker: Docker Desktop | arquitectura: aarch64 | CPUs: 8 | memoria: 4106539008
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % docker image inspect localstack/localstack:latest --format "Imagen LocalStack: {{.Os}}/{{.Architecture}}"
+Imagen LocalStack: linux/arm64

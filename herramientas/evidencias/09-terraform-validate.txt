@@ -1,0 +1,5 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % terraform fmt -check -diff && echo "Formato correcto"
+Formato correcto
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % terraform validate
+[32m[1mSuccess![0m The configuration is valid.
+[0m

@@ -1,0 +1,20 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % ./pruebas/probar-api.sh
+== Inicio de sesión ==
+1   Clave incorrecta                     POST /api/sesion               -> HTTP 401  (no se emite token)
+2   Login correcto (lector y admin)      POST /api/sesion               -> HTTP 200  tokens recibidos (241 y 239 caracteres)
+== Endpoints sensibles ==
+3   Sin token                            GET /api/perfil                -> HTTP 401  {"error":"Falta el token (Authorization: Bearer <token>)"}
+4   Token inventado                      GET /api/usuarios              -> HTTP 401  {"error":"Token inválido"}
+5   Lector: su perfil                    GET /api/perfil                -> HTTP 200  {"usuario":"lector","rol":"lector"}
+6   Lector: lista de usuarios (admin)    GET /api/usuarios              -> HTTP 403  {"error":"Tu rol no tiene permiso"}
+7   Lector: reporte en S3 (admin)        GET /api/reportes/resumen.txt  -> HTTP 403  {"error":"Tu rol no tiene permiso"}
+8   Admin: lista de usuarios             GET /api/usuarios              -> HTTP 200  [{"usuario":"admin","rol":"admin","nombre":"Administradora de reportes
+9   Admin: reporte en S3                 GET /api/reportes/resumen.txt  -> HTTP 200  {"nombre":"resumen.txt","cifrado":"AES256","contenido":"Reporte trimes
+== Manipulación del token ==
+10  Firma alterada (1 caracter)          GET /api/usuarios              -> HTTP 401  {"error":"Token inválido"}
+11  alg none + rol admin falsificado     GET /api/usuarios              -> HTTP 401  {"error":"Token inválido"}
+12  Token vencido (emitido hace 1 h)     GET /api/usuarios              -> HTTP 401  {"error":"Token expirado"}
+13  Firmado con otro secreto             GET /api/usuarios              -> HTTP 401  {"error":"Token inválido"}
+== Contenido del token de admin (payload decodificado) ==
+{"rol": "admin", "iat": 1794367901, "exp": 1794368801, "aud": "sitio-reportes", "iss": "api-reportes-actividad3", "sub": "admin"}
+vigencia: 900 segundos

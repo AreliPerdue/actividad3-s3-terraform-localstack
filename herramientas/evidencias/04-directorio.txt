@@ -1,0 +1,29 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % pwd
+/Users/Areli/Documents/GitHub/actividad3-s3-terraform-localstack
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % ls -la
+total 64
+drwxr-xr-x@ 11 Areli  staff  352 Nov  9 20:38 .
+drwxr-xr-x@  4 Areli  staff  128 Nov  9 20:37 ..
+-rw-r--r--@  1 Areli  staff  168 Nov  9 20:38 .env.example
+-rw-r--r--@  1 Areli  staff  313 Nov  9 20:38 .gitignore
+-rw-r--r--@  1 Areli  staff  759 Nov  9 20:38 compose.yaml
+-rw-r--r--@  1 Areli  staff  954 Nov  9 20:38 main.tf
+-rw-r--r--@  1 Areli  staff  289 Nov  9 20:38 outputs.tf
+-rw-r--r--@  1 Areli  staff  611 Nov  9 20:38 providers.tf
+-rw-r--r--@  1 Areli  staff  117 Nov  9 20:38 prueba.txt
+drwxr-xr-x@  3 Areli  staff   96 Nov  9 20:38 scripts
+-rw-r--r--@  1 Areli  staff  596 Nov  9 20:38 variables.tf
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % tree -a -I .git 2>/dev/null || find . -not -path "./.git*" | sort
+.
+|-- .env.example
+|-- .gitignore
+|-- compose.yaml
+|-- main.tf
+|-- outputs.tf
+|-- providers.tf
+|-- prueba.txt
+|-- scripts
+|   `-- verificar.sh
+`-- variables.tf
+
+2 directories, 9 files

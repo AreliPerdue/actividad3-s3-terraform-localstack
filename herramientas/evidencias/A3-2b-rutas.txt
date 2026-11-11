@@ -1,0 +1,6 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % grep -nE "app\.(get|post)\(" src/servidor.js
+47:app.get('/api/salud', (req, res) => res.json({ estado: 'ok' }));
+49:app.post('/api/sesion', limitarIntentos, (req, res) => {
+56:app.get('/api/perfil', verificarToken, (req, res) => res.json({ usuario: req.usuario.usuario, rol: req.usuario.rol }));
+58:app.get('/api/usuarios', verificarToken, exigirRol('admin'), (req, res) => res.json(listar()));
+60:app.get('/api/reportes/:nombre', verificarToken, exigirRol('admin'), async (req, res) => {

@@ -1,0 +1,11 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % docker run --rm --entrypoint node reportes-api:1.0 -e "console.log(\"node\", process.version, \"| usuario:\", require(\"os\").userInfo().username)"
+node v18.20.8 | usuario: node
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % docker run --rm --entrypoint sh reportes-api:1.0 -c "command -v npm || echo npm: no incluido en la imagen"
+npm: no incluido en la imagen
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % docker run -d --name reportes-api --env-file .env -p 127.0.0.1:3000:3000 --read-only --cap-drop ALL --security-opt no-new-privileges reportes-api:1.0
+a716728ee76bd768f646341fcc50e16bb646b8967d84fa82927c8bfe7cdd2f0c
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % sleep 20; docker ps --filter name=reportes-api --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
+NAMES          IMAGE              STATUS                    PORTS
+reportes-api   reportes-api:1.0   Up 20 seconds (healthy)   127.0.0.1:3000->3000/tcp
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % curl -s http://localhost:3000/api/salud
+{"estado":"ok"}

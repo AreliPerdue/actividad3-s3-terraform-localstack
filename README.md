@@ -7,7 +7,9 @@ Este repositorio tiene dos partes:
    autenticación JWT y sitio web probados con curl y OWASP ZAP, rol IAM de mínimo privilegio y diagrama de arquitectura.
 2. **Práctica en clase** (raíz del repo, descrita abajo): el laboratorio base de LocalStack con S3.
 
-`compose.yaml` levanta LocalStack con S3, IAM y STS para ambas partes.
+`compose.yaml` levanta LocalStack con S3, IAM y STS para ambas partes. En [`herramientas/`](herramientas/README.md)
+están los scripts con los que se generaron las evidencias (salidas reales de cada comando, capturas del sitio y el
+documento de entrega).
 
 ---
 

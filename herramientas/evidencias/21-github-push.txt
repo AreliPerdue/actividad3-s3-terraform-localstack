@@ -1,0 +1,10 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % gh repo create AreliPerdue/actividad3-s3-terraform-localstack --public --description "Bucket S3 seguro (AES256 + bloqueo publico) con Terraform y LocalStack" --source . --remote origin --push
+https://github.com/AreliPerdue/actividad3-s3-terraform-localstack
+To https://github.com/AreliPerdue/actividad3-s3-terraform-localstack.git
+ * [new branch]      HEAD -> main
+branch 'main' set up to track 'origin/main'.
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % git remote -v
+origin	https://github.com/AreliPerdue/actividad3-s3-terraform-localstack.git (fetch)
+origin	https://github.com/AreliPerdue/actividad3-s3-terraform-localstack.git (push)
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % git status -sb | head -1
+## main...origin/main

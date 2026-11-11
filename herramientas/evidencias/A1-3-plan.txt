@@ -1,0 +1,7 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase1-iac[0m % terraform plan -out=tfplan | grep -E "will be created|Plan:"
+[1m  # aws_s3_bucket.reportes[0m will be created
+[1m  # aws_s3_bucket_policy.reportes[0m will be created
+[1m  # aws_s3_bucket_public_access_block.reportes[0m will be created
+[1m  # aws_s3_bucket_server_side_encryption_configuration.reportes[0m will be created
+[1m  # aws_s3_bucket_versioning.reportes[0m will be created
+[1mPlan:[0m [0m5 to add, 0 to change, 0 to destroy.

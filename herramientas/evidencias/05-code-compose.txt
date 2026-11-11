@@ -1,0 +1,27 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % cat compose.yaml
+# LocalStack para la Actividad 3: emula S3 en la computadora local.
+# El token se lee de la variable de entorno LOCALSTACK_AUTH_TOKEN
+# (archivo .env, que NO se sube al repositorio).
+services:
+  localstack:
+    container_name: localstack-actividad3
+    image: localstack/localstack:latest
+    ports:
+      # Solo localhost: el puerto 4566 no queda expuesto a la red.
+      - "127.0.0.1:4566:4566"
+    environment:
+      - SERVICES=s3
+      - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN:?Define LOCALSTACK_AUTH_TOKEN en el archivo .env}
+      - DEBUG=0
+    healthcheck:
+      # La imagen no trae curl: se consulta el endpoint de salud con Python.
+      test: ["CMD", "python3", "-c", "import urllib.request as u; u.urlopen('http://localhost:4566/_localstack/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+    restart: unless-stopped
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % cat .env.example
+# Copia este archivo como .env y pega tu token de LocalStack (plan Hobby).
+# .env está en .gitignore: nunca se sube a GitHub.
+LOCALSTACK_AUTH_TOKEN=pega-aqui-tu-token

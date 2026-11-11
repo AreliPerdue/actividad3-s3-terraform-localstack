@@ -1,0 +1,9 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase2-contenedores[0m % ./escanear.sh reportes-api:node18 node18-sin-endurecer
+Objetivo                                     CRITICAL   HIGH
+reportes-api:node18 (alpine 3.21.3)                 2     22
+Node.js                                             1     21
+TOTAL                                               3     43
+  CRITICAL CVE-2026-31789   libcrypto3     3.3.3-r0                   corregida en: 3.3.7-r0
+  CRITICAL CVE-2026-31789   libssl3        3.3.3-r0                   corregida en: 3.3.7-r0
+  CRITICAL CVE-2026-59873   tar            6.2.1                      corregida en: 7.5.19
+Reporte completo: reportes/trivy-node18-sin-endurecer.txt

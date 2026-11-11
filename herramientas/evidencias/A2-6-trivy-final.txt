@@ -1,0 +1,6 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase2-contenedores[0m % ./escanear.sh reportes-api:1.0 final-node18
+Objetivo                                     CRITICAL   HIGH
+reportes-api:1.0 (alpine 3.21.3)                    0      0
+Node.js                                             0      0
+TOTAL                                               0      0
+Reporte completo: reportes/trivy-final-node18.txt

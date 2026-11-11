@@ -1,0 +1,5 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % diff Dockerfile.vulnerable Dockerfile.node18-sin-endurecer | grep "^[<>] FROM"
+< FROM node:14-slim
+> FROM node:18-alpine
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % docker build -q -f Dockerfile.node18-sin-endurecer -t reportes-api:node18 .
+sha256:8faddb357ac1686a25d8764c7852f61c599e4fd68f2b02b456966b85861b0efe

@@ -1,0 +1,12 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % cat prueba.txt
+Archivo de prueba de la Actividad 3 - bucket S3 seguro en LocalStack.
+No contiene información real ni confidencial.
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % aws --endpoint-url $EP s3 cp prueba.txt s3://actividad3-seguro-local/
+Completed 117 Bytes/117 Bytes (5.2 KiB/s) with 1 file(s) remainingupload: ./prueba.txt to s3://actividad3-seguro-local/prueba.txt   
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % aws --endpoint-url $EP s3 ls s3://actividad3-seguro-local/
+2026-11-10 20:24:50        117 prueba.txt
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % aws --endpoint-url $EP s3api head-object --bucket actividad3-seguro-local --key prueba.txt --query '{Tamano:ContentLength,Cifrado:ServerSideEncryption}'
+{
+    "Tamano": 117,
+    "Cifrado": "AES256"
+}

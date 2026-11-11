@@ -1,0 +1,18 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase1-iac[0m % aws configure set region us-east-1 --profile localstack && aws configure set output json --profile localstack && aws configure set endpoint_url http://localhost:4566 --profile localstack && aws configure set aws_access_key_id test --profile localstack && aws configure set aws_secret_access_key test --profile localstack
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase1-iac[0m % aws configure list --profile localstack
+NAME       : VALUE                    : TYPE             : LOCATION
+profile    : localstack               : manual           : --profile
+access_key : ****************test     : shared-credentials-file : 
+secret_key : ****************test     : shared-credentials-file : 
+region     : us-east-1                : config-file      : ~/.aws/config
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase1-iac[0m % sed -n "/\[profile localstack\]/,/^$/p" ~/.aws/config
+[profile localstack]
+region = us-east-1
+output = json
+endpoint_url = http://localhost:4566
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase1-iac[0m % aws sts get-caller-identity --profile localstack
+{
+    "UserId": "000000000000",
+    "Account": "000000000000",
+    "Arn": "arn:aws:iam::000000000000:root"
+}

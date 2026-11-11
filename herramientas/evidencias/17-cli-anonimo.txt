@@ -1,0 +1,8 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % aws --endpoint-url $EP --no-sign-request s3 cp s3://actividad3-seguro-local/prueba.txt -
+Archivo de prueba de la Actividad 3 - bucket S3 seguro en LocalStack.
+No contiene información real ni confidencial.
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % curl -s -o /dev/null -w 'HTTP %{http_code}\n' http://localhost:4566/actividad3-seguro-local/prueba.txt
+HTTP 200
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % curl -s http://localhost:4566/actividad3-seguro-local/prueba.txt
+Archivo de prueba de la Actividad 3 - bucket S3 seguro en LocalStack.
+No contiene información real ni confidencial.

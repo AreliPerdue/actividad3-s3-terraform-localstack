@@ -1,0 +1,16 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % curl -s -o /dev/null -w "HTTP %{http_code}  (sin iniciar sesion)\n" https://github.com/AreliPerdue/actividad3-s3-terraform-localstack
+HTTP 200  (sin iniciar sesion)
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % gh repo view AreliPerdue/actividad3-s3-terraform-localstack --json visibility,url,defaultBranchRef --jq "{visibilidad: .visibility, url: .url, rama: .defaultBranchRef.name}"
+{"rama":"main","url":"https://github.com/AreliPerdue/actividad3-s3-terraform-localstack","visibilidad":"PUBLIC"}
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % curl -s https://api.github.com/repos/AreliPerdue/actividad3-s3-terraform-localstack/contents | python3 -c "import json,sys; [print(f[\"name\"]) for f in json.load(sys.stdin)]"
+.env.example
+.gitignore
+.terraform.lock.hcl
+README.md
+compose.yaml
+main.tf
+outputs.tf
+providers.tf
+prueba.txt
+scripts
+variables.tf

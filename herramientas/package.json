@@ -1,0 +1,6 @@
+{
+  "name": "herramientas-evidencias",
+  "private": true,
+  "description": "Capturas del sitio con Chrome headless (puppeteer-core usa el Chrome instalado)",
+  "dependencies": { "puppeteer-core": "^24.0.0" }
+}

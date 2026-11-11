@@ -1,0 +1,10 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % docker info --format "Servidor Docker {{.ServerVersion}} | contexto: {{.Name}} | SO: {{.OperatingSystem}}"
+Servidor Docker 29.9.2 | contexto: docker-desktop | SO: Docker Desktop
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % ps -axco pid,command | grep -i "docker" | head -5
+77020 com.docker.backend
+77029 com.docker.backend
+77030 com.docker.backend
+77060 com.docker.build
+77063 Docker Desktop
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES

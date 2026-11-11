@@ -1,0 +1,18 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % export AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test AWS_DEFAULT_REGION=us-east-1 EP=http://localhost:4566
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % aws --endpoint-url $EP s3api list-buckets
+{
+    "Buckets": [
+        {
+            "Name": "actividad3-seguro-local",
+            "CreationDate": "2026-11-11T02:24:30+00:00",
+            "BucketRegion": "us-east-1",
+            "BucketArn": "arn:aws:s3:::actividad3-seguro-local"
+        }
+    ],
+    "Owner": {
+        "ID": "75aa57f09aa0c8caeab4f8c24e99d10f8e7faeebf76c078efc7c6caea54ba06a"
+    },
+    "Prefix": null
+}
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % aws --endpoint-url $EP s3 ls
+2026-11-10 20:24:30 actividad3-seguro-local

@@ -1,0 +1,17 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % cat Dockerfile.vulnerable
+# Versión INICIAL (vulnerable) — solo para el escaneo con Trivy, no para producción.
+# node:14 (variante slim, por espacio en disco) llegó a fin de soporte en abril de 2023 y su base Debian 10 ya no recibe parches.
+FROM node:14-slim
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY src ./src
+COPY public ./public
+EXPOSE 3000
+# Corre como root y sin healthcheck
+CMD ["node", "src/servidor.js"]
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % docker build -q -f Dockerfile.vulnerable -t reportes-api:vulnerable .
+sha256:4a2cbbc709b6af768a9935724b09e0587b3844fff75a439c69fd95d99a36c027
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % docker images reportes-api:vulnerable
+IMAGE                     ID             DISK USAGE   CONTENT SIZE   EXTRA
+reportes-api:vulnerable   4a2cbbc709b6        326MB           73MB        

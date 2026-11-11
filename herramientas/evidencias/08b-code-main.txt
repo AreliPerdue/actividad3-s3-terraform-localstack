@@ -1,0 +1,44 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % cat main.tf
+# 1) Bucket S3
+resource "aws_s3_bucket" "seguro" {
+  bucket        = var.bucket_name
+  force_destroy = true # permite "terraform destroy" aunque tenga archivos (solo laboratorio)
+
+  tags = {
+    Proyecto = "actividad3"
+    Entorno  = "localstack"
+  }
+}
+
+# 2) Cifrado del lado del servidor SSE-S3 (AES-256)
+resource "aws_s3_bucket_server_side_encryption_configuration" "seguro" {
+  bucket = aws_s3_bucket.seguro.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
+}
+
+# 3) Los cuatro controles de bloqueo de acceso público
+resource "aws_s3_bucket_public_access_block" "seguro" {
+  bucket = aws_s3_bucket.seguro.id
+
+  block_public_acls       = true # rechaza ACL públicas nuevas
+  ignore_public_acls      = true # ignora ACL públicas existentes
+  block_public_policy     = true # rechaza políticas de bucket públicas
+  restrict_public_buckets = true # limita el acceso si ya hay una política pública
+}
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % cat outputs.tf
+output "bucket_name" {
+  value = aws_s3_bucket.seguro.bucket
+}
+
+output "bucket_arn" {
+  value = aws_s3_bucket.seguro.arn
+}
+
+output "sse_algorithm" {
+  value = one(aws_s3_bucket_server_side_encryption_configuration.seguro.rule[*].apply_server_side_encryption_by_default[0].sse_algorithm)
+}

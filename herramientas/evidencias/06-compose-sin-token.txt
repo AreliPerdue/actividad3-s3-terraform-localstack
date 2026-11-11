@@ -1,0 +1,6 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % cat .env.example
+# Copia este archivo como .env y pega tu token de LocalStack (plan Hobby).
+# .env está en .gitignore: nunca se sube a GitHub.
+LOCALSTACK_AUTH_TOKEN=pega-aqui-tu-token
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % docker compose up -d
+error while interpolating services.localstack.environment.[]: required variable LOCALSTACK_AUTH_TOKEN is missing a value: Define LOCALSTACK_AUTH_TOKEN en el archivo .env

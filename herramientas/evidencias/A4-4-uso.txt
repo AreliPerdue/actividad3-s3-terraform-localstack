@@ -1,0 +1,13 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase4-iam[0m % aws s3 cp resumen.txt s3://actividad3-reportes-cifrados/reportes/resumen.txt --profile localstack
+Completed 73 Bytes/73 Bytes (1.8 KiB/s) with 1 file(s) remainingupload: ./resumen.txt to s3://actividad3-reportes-cifrados/reportes/resumen.txt
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase4-iam[0m % ./ejemplo-uso.sh
+1) Asumir el rol (credenciales temporales de STS)
+   sesion valida hasta 2026-11-11T03:26:48.402560+00:00
+2) Identidad con la que se hacen las llamadas
+arn:aws:sts::000000000000:assumed-role/rol-lector-reportes/api-reportes
+3) s3:GetObject sobre reportes/resumen.txt (PERMITIDO por la politica)
+73	AES256
+Reporte trimestral de prueba (datos ficticios)
+Ventas Q3: 1,250 unidades
+4) s3:PutObject con el mismo rol (NO esta en la politica)
+   LocalStack lo acepto: en el plan Hobby no aplica IAM (ENFORCE_IAM). En AWS real: AccessDenied.

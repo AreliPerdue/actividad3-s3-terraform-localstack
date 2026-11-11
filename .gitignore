@@ -27,3 +27,9 @@ volume/
 
 # Node
 node_modules/
+
+# Herramientas de evidencias: salidas generadas y plantilla personal
+herramientas/capturas/
+herramientas/capturas-reales/
+herramientas/plantilla/
+*.docx

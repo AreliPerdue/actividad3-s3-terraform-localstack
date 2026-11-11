@@ -1,0 +1,9 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % brew tap | grep hashicorp
+hashicorp/tap
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % brew list --versions terraform awscli
+awscli 2.34.16
+terraform 1.17.1
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % which docker terraform aws
+/usr/local/bin/docker
+/opt/homebrew/bin/terraform
+/opt/homebrew/bin/aws

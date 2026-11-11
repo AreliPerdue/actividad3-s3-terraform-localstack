@@ -1,0 +1,8 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % terraform state list
+aws_s3_bucket.seguro
+aws_s3_bucket_public_access_block.seguro
+aws_s3_bucket_server_side_encryption_configuration.seguro
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % terraform output
+bucket_arn = "arn:aws:s3:::actividad3-seguro-local"
+bucket_name = "actividad3-seguro-local"
+sse_algorithm = "AES256"

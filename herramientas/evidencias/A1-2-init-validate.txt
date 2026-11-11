@@ -1,0 +1,9 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase1-iac[0m % terraform init -no-color | grep -E "Installing|Installed|successfully"
+- Installing hashicorp/aws v6.72.0...
+- Installed hashicorp/aws v6.72.0 (signed by HashiCorp)
+Terraform has been successfully initialized!
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase1-iac[0m % terraform fmt -check && echo "Formato correcto"
+Formato correcto
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase1-iac[0m % terraform validate
+[32m[1mSuccess![0m The configuration is valid.
+[0m

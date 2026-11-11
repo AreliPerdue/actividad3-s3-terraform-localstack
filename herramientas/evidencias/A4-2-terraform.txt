@@ -1,0 +1,15 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase4-iam[0m % terraform init -no-color | grep -E "Installed|successfully"
+- Installed hashicorp/aws v6.72.0 (signed by HashiCorp)
+Terraform has been successfully initialized!
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase4-iam[0m % terraform validate
+[32m[1mSuccess![0m The configuration is valid.
+[0m
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase4-iam[0m % terraform apply -auto-approve | grep -E "Creation complete|Apply complete|rol_arn|politica_arn"
+  [32m+[0m[0m politica_arn = (known after apply)
+  [32m+[0m[0m rol_arn      = (known after apply)
+[0m[1maws_iam_policy.solo_lectura: Creation complete after 0s [id=arn:aws:iam::000000000000:policy/politica-solo-lectura-reportes][0m
+[0m[1maws_iam_role.lector: Creation complete after 0s [id=rol-lector-reportes][0m
+[0m[1maws_iam_role_policy_attachment.lector: Creation complete after 0s [id=rol-lector-reportes/arn:aws:iam::000000000000:policy/politica-solo-lectura-reportes][0m
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.[0m
+[0mpolitica_arn = "arn:aws:iam::000000000000:policy/politica-solo-lectura-reportes"
+rol_arn = "arn:aws:iam::000000000000:role/rol-lector-reportes"

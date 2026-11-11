@@ -1,0 +1,24 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % git ls-files
+.env.example
+.gitignore
+.terraform.lock.hcl
+README.md
+compose.yaml
+main.tf
+outputs.tf
+providers.tf
+prueba.txt
+scripts/verificar.sh
+variables.tf
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % git check-ignore -v .env terraform.tfstate .terraform
+.gitignore:2:.env	.env
+.gitignore:10:*.tfstate	terraform.tfstate
+.gitignore:9:.terraform/	.terraform
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % git log --oneline
+71b1b1f Resultados del laboratorio y healthcheck sin curl
+8e7b558 Laboratorio S3 seguro con Terraform + LocalStack

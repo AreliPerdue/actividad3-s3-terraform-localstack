@@ -1,0 +1,12 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % id -un && id -Gn | tr " " "\n" | grep -E "^(admin|staff)$"
+Areli
+staff
+admin
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % ls -l /var/run/docker.sock
+lrwxr-xr-x@ 1 root  daemon  36 Sep  9 21:45 /var/run/docker.sock -> /Users/Areli/.docker/run/docker.sock
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % docker context ls
+NAME              DESCRIPTION                               DOCKER ENDPOINT                               ERROR
+default           Current DOCKER_HOST based configuration   unix:///var/run/docker.sock                   
+desktop-linux *   Docker Desktop                            unix:///Users/Areli/.docker/run/docker.sock   
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % ls -l /usr/local/bin/docker
+lrwxr-xr-x@ 1 root  wheel  54 Feb 25  2026 /usr/local/bin/docker -> /Applications/Docker.app/Contents/Resources/bin/docker

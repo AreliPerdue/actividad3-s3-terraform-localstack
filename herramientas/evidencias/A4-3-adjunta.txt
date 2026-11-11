@@ -1,0 +1,21 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase4-iam[0m % aws iam list-attached-role-policies --role-name rol-lector-reportes --profile localstack
+{
+    "AttachedPolicies": [
+        {
+            "PolicyName": "politica-solo-lectura-reportes",
+            "PolicyArn": "arn:aws:iam::000000000000:policy/politica-solo-lectura-reportes"
+        }
+    ]
+}
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase4-iam[0m % aws iam get-policy-version --policy-arn arn:aws:iam::000000000000:policy/politica-solo-lectura-reportes --version-id v1 --profile localstack --query PolicyVersion.Document
+{
+    "Statement": [
+        {
+            "Action": "s3:GetObject",
+            "Effect": "Allow",
+            "Resource": "arn:aws:s3:::actividad3-reportes-cifrados/reportes/*",
+            "Sid": "SoloLeerReportes"
+        }
+    ],
+    "Version": "2012-10-17"
+}

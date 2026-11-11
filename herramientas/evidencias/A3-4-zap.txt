@@ -1,0 +1,25 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase3-api[0m % ./zap/escanear-zap.sh
+1) Iniciando ZAP 2.17.0 en modo daemon
+2) Importando la definición OpenAPI de la API
+3) Araña (spider) sobre http://localhost:3000
+4) Escaneo activo
+5) URLs evaluadas
+    http://localhost:3000
+    http://localhost:3000/?clave=ZAP&usuario=ZAP
+    http://localhost:3000/api
+    http://localhost:3000/api/perfil
+    http://localhost:3000/api/reportes
+    http://localhost:3000/api/reportes/resumen.txt
+    http://localhost:3000/api/salud
+    http://localhost:3000/api/sesion
+    http://localhost:3000/api/usuarios
+    http://localhost:3000/app.js
+    http://localhost:3000/estilos.css
+    http://localhost:3000/robots.txt
+    http://localhost:3000/sitemap.xml
+6) Resumen de alertas
+   High: 0 | Medium: 1 | Low: 0 | Informational: 2
+   Medium          1  HTTP Only Site
+   Informational   1  Modern Web Application
+   Informational   5  User Agent Fuzzer
+Reportes: zap/reporte-zap.html y zap/reporte-zap.json

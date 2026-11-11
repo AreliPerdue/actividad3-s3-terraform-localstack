@@ -1,0 +1,12 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % ls -la .env && git check-ignore -v .env
+-rw-r--r--@ 1 Areli  staff  189 Nov 10 20:20 .env
+.gitignore:2:.env	.env
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mactividad3-s3-terraform-localstack[0m % docker compose up -d
+ Network actividad3-s3-terraform-localstack_default Creating 
+ Network actividad3-s3-terraform-localstack_default Creating 
+ Network actividad3-s3-terraform-localstack_default Created 
+ Network actividad3-s3-terraform-localstack_default Created 
+ Container localstack-actividad3 Creating 
+ Container localstack-actividad3 Created 
+ Container localstack-actividad3 Starting 
+ Container localstack-actividad3 Started 

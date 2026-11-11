@@ -1,0 +1,42 @@
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase1-iac[0m % aws s3api get-bucket-policy --bucket actividad3-reportes-cifrados --profile localstack --query Policy --output text | python3 -m json.tool
+{
+    "Statement": [
+        {
+            "Action": "s3:*",
+            "Condition": {
+                "StringNotEquals": {
+                    "aws:PrincipalAccount": "000000000000"
+                }
+            },
+            "Effect": "Deny",
+            "Principal": "*",
+            "Resource": [
+                "arn:aws:s3:::actividad3-reportes-cifrados",
+                "arn:aws:s3:::actividad3-reportes-cifrados/*"
+            ],
+            "Sid": "NegarAccesoPublicoYExterno"
+        },
+        {
+            "Action": "s3:*",
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "false"
+                }
+            },
+            "Effect": "Deny",
+            "Principal": "*",
+            "Resource": [
+                "arn:aws:s3:::actividad3-reportes-cifrados",
+                "arn:aws:s3:::actividad3-reportes-cifrados/*"
+            ],
+            "Sid": "NegarSolicitudesSinHTTPS"
+        }
+    ],
+    "Version": "2012-10-17"
+}
+[1;32mAreli@Areli-MacBook-Air[0m [1;34mfase1-iac[0m % aws s3api get-bucket-policy-status --bucket actividad3-reportes-cifrados --profile localstack
+{
+    "PolicyStatus": {
+        "IsPublic": false
+    }
+}
