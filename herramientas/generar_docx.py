@@ -154,6 +154,34 @@ def page_break():
 
 
 doc.add_page_break = page_break
+
+
+from docx.opc.constants import RELATIONSHIP_TYPE as RT
+
+
+def enlace(p, texto, url):
+    """Agrega un hipervínculo clicable (azul, subrayado, Arial) al párrafo p."""
+    rid = p.part.relate_to(url, RT.HYPERLINK, is_external=True)
+    h = OxmlElement("w:hyperlink")
+    h.set(qn("r:id"), rid)
+    r = OxmlElement("w:r")
+    rpr = OxmlElement("w:rPr")
+    for tag, val in (("w:rFonts", None), ("w:color", "0563C1"), ("w:u", "single"), ("w:sz", "24")):
+        e = OxmlElement(tag)
+        if tag == "w:rFonts":
+            for a in ("w:ascii", "w:hAnsi", "w:cs"):
+                e.set(qn(a), "Arial")
+        else:
+            e.set(qn("w:val"), val)
+        rpr.append(e)
+    r.append(rpr)
+    t = OxmlElement("w:t")
+    t.text = texto
+    t.set(qn("xml:space"), "preserve")
+    r.append(t)
+    h.append(r)
+    p._p.append(h)
+    return p
 doc.add_page_break()
 
 # ===================== ACTIVIDAD 3 (fases de la rúbrica) =====================
@@ -207,7 +235,8 @@ tabla(["Componente", "Versión / detalle"], [
     ("API y sitio", "Node.js 18.20.8 en el contenedor, Express 5.3, jsonwebtoken 9.0.3, helmet 8.3, AWS SDK v3"),
     ("Pruebas de seguridad", "curl, Chrome headless para las capturas del sitio y OWASP ZAP 2.17.0"),
 ], [4.2, 12.4])
-rich([("Repositorio: ", "b"), (REPO, ""), (" (carpeta ", ""), ("actividad3/", "c"), (", una subcarpeta por fase)", "")])
+p = rich([("Repositorio en GitHub: ", "b")]); enlace(p, REPO, REPO)
+rich([("El código de la actividad está en la carpeta ", ""), ("actividad3/", "c"), (" (una subcarpeta por fase) y el README explica qué hay en cada una y cómo reproducirlo.", "")])
 
 # ---------------- Fase 1 ----------------
 doc.add_heading("Fase 1. Configuración segura en la nube con IaC", level=1)
@@ -414,14 +443,30 @@ tabla(["Criterio", "Evidencia", "Resultado"], [
 ], [5.0, 3.4, 8.2])
 
 doc.add_heading("Repositorio y archivos de soporte", level=2)
-rich([("Todo el código está en ", ""), (REPO, "b"), (":", "")])
-for t in ["actividad3/fase1-iac: script.tf",
-          "actividad3/fase2-contenedores: escanear.sh y reportes de Trivy (txt y json) de las tres imágenes",
-          "actividad3/fase3-api: código de la API y del sitio, Dockerfile.vulnerable, Dockerfile.node18-sin-endurecer, "
-          "Dockerfile, openapi.yaml, pruebas/probar-api.sh y reporte de ZAP (zap/reporte-zap.html)",
-          "actividad3/fase4-iam: politica-lector.json, confianza-rol.json, iam.tf y ejemplo-uso.sh",
-          "actividad3/fase5-diagrama: arquitectura.svg y arquitectura.png"]:
-    doc.add_paragraph(t, style="List Bullet")
+p = rich([("Todo el código y los reportes están en ", "")]); enlace(p, REPO, REPO)
+para("Dónde encontrar cada evidencia en el repositorio:")
+_t = doc.add_table(rows=1, cols=3)
+_t.style = "Table Grid"
+for c, h in zip(_t.rows[0].cells, ["Criterio", "Qué hay", "Carpeta (enlace)"]):
+    c.text = h
+_base = REPO + "/tree/main/"
+for crit, que, ruta in [
+    ("1. IaC", "script.tf (bucket, cifrado, bloqueo, política)", "actividad3/fase1-iac"),
+    ("2. Trivy", "escanear.sh y reportes de las tres imágenes", "actividad3/fase2-contenedores"),
+    ("2 y 3", "API, sitio web, Dockerfiles, pruebas con curl, openapi.yaml y reporte de ZAP", "actividad3/fase3-api"),
+    ("4. IAM", "politica-lector.json, confianza-rol.json, iam.tf y ejemplo-uso.sh", "actividad3/fase4-iam"),
+    ("5. Diagrama", "arquitectura.svg y arquitectura.png", "actividad3/fase5-diagrama"),
+    ("Evidencias", "Salidas reales de todos los comandos y scripts de captura", "herramientas"),
+    ("Anexo", "Práctica en clase (compose.yaml, providers.tf, main.tf)", ""),
+]:
+    cells = _t.add_row().cells
+    cells[0].text, cells[1].text = crit, que
+    cp = cells[2].paragraphs[0]
+    enlace(cp, ruta or "raíz del repositorio", _base + ruta if ruta else REPO)
+for r in _t.rows:
+    for i, c in enumerate(r.cells):
+        c.width = Cm([2.6, 7.4, 5.6][i])
+para()
 doc.add_page_break()
 
 # ===================== ANEXO: práctica en clase =====================
@@ -433,7 +478,7 @@ doc.add_heading("Propósito", level=1)
 para("Construir un bucket S3 simulado con Terraform, declarar su cifrado AES-256 y los cuatro controles de "
      "bloqueo de acceso público, y verificar qué quedó realmente configurado y cómo se comporta el servicio. "
      "Todo corre en mi computadora con LocalStack (http://localhost:4566); no se usa AWS real.")
-rich([("Repositorio público: ", "b"), (REPO, "")])
+p = rich([("Repositorio público: ", "b")]); enlace(p, REPO, REPO)
 rich([("Datos del laboratorio: ", "b"), ("bucket ", ""), ("actividad3-seguro-local", "c"), (" · región ", ""),
       ("us-east-1", "c"), (" · endpoint ", ""), ("http://localhost:4566", "c"), (" · cifrado SSE-S3 AES256 · 3 recursos de Terraform.", "")])
 para("Nota sobre las capturas: las de Docker Desktop y del navegador son capturas de pantalla. Las de la terminal "

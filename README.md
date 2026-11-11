@@ -11,6 +11,19 @@ Este repositorio tiene dos partes:
 están los scripts con los que se generaron las evidencias (salidas reales de cada comando, capturas del sitio y el
 documento de entrega).
 
+## Dónde encontrar qué
+
+| Criterio de la rúbrica | Archivos | Evidencia y resultado |
+|---|---|---|
+| 1. IaC con cifrado y bloqueo de acceso | [`actividad3/fase1-iac/script.tf`](actividad3/fase1-iac/script.tf) | AES-256, bloqueo ×4, versionado y política explícita · `IsPublic: false` ([salida](herramientas/evidencias/A1-6-politica.txt)) |
+| 2. Contenedores y Trivy | [`Dockerfile.vulnerable`](actividad3/fase3-api/Dockerfile.vulnerable) · [`Dockerfile.node18-sin-endurecer`](actividad3/fase3-api/Dockerfile.node18-sin-endurecer) · [`Dockerfile`](actividad3/fase3-api/Dockerfile) · [`escanear.sh`](actividad3/fase2-contenedores/escanear.sh) | [Reportes de Trivy](actividad3/fase2-contenedores/reportes): node:14 con 4 críticas → node:18 endurecido con **0 críticas y 0 altas** |
+| 3. JWT y OWASP ZAP | [`src/autenticacion.js`](actividad3/fase3-api/src/autenticacion.js) (middleware) · [`src/servidor.js`](actividad3/fase3-api/src/servidor.js) (rutas) · [`public/`](actividad3/fase3-api/public) (sitio web) · [`pruebas/probar-api.sh`](actividad3/fase3-api/pruebas/probar-api.sh) · [`zap/escanear-zap.sh`](actividad3/fase3-api/zap/escanear-zap.sh) | [13 pruebas con curl](herramientas/evidencias/A3-3-curl.txt) · [reporte de ZAP](actividad3/fase3-api/zap/reporte-zap.html): 0 altas |
+| 4. Política IAM restrictiva | [`politica-lector.json`](actividad3/fase4-iam/politica-lector.json) · [`confianza-rol.json`](actividad3/fase4-iam/confianza-rol.json) · [`iam.tf`](actividad3/fase4-iam/iam.tf) · [`ejemplo-uso.sh`](actividad3/fase4-iam/ejemplo-uso.sh) | Solo `s3:GetObject` sobre `reportes/*` · [ejemplo aplicado](herramientas/evidencias/A4-4-uso.txt) |
+| 5. Diagrama de arquitectura | [`arquitectura.svg`](actividad3/fase5-diagrama/arquitectura.svg) · [`arquitectura.png`](actividad3/fase5-diagrama/arquitectura.png) | S3, contenedor, API, JWT e IAM con flujo de datos |
+| Práctica en clase (anexo) | [`compose.yaml`](compose.yaml) · [`providers.tf`](providers.tf) · [`main.tf`](main.tf) · [`scripts/verificar.sh`](scripts/verificar.sh) | Ver la sección de abajo |
+
+Instrucciones paso a paso para reproducir la Actividad 3: [`actividad3/README.md`](actividad3/README.md).
+
 ---
 
 ## Práctica en clase · Bucket S3 seguro con Terraform + LocalStack
