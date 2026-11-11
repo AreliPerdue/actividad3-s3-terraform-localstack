@@ -12,7 +12,7 @@ BUCKET="${1:-actividad3-seguro-local}"
 titulo() { printf '\n== %s ==\n' "$1"; }
 
 titulo "Salud de LocalStack"
-curl -s "$EP/_localstack/health"; echo
+curl -s "$EP/_localstack/health" | python3 -c 'import json,sys; d=json.load(sys.stdin); print("s3:", d["services"].get("s3"), "| edition:", d.get("edition"), "| version:", d.get("version"))'
 
 titulo "Buckets"
 aws --endpoint-url "$EP" s3api list-buckets --query 'Buckets[].Name'

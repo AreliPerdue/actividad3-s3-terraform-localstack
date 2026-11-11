@@ -102,17 +102,30 @@ docker compose down
 
 ## Resultados e interpretación
 
+Ejecutado el 10 de noviembre de 2026 con LocalStack 2026.10.6, Terraform 1.17.1 y provider AWS 6.72.0.
+
 | Prueba | Resultado |
 |---|---|
-| `terraform plan` | 3 recursos por crear |
-| Cifrado | `SSEAlgorithm: AES256` |
+| Contenedor | `Up (healthy)`, puerto `127.0.0.1:4566`, `"s3": "available"` |
+| `terraform plan` | `Plan: 3 to add, 0 to change, 0 to destroy` |
+| `terraform apply` | `Apply complete! Resources: 3 added` |
+| Cifrado | `SSEAlgorithm: AES256` (y el objeto subido reporta `ServerSideEncryption: AES256`) |
 | Bloqueo de acceso público | Los 4 controles en `true` |
-| Descarga anónima (`--no-sign-request`) | Ver [resultados](#resultado-del-acceso-anónimo) |
+| Subida de `prueba.txt` | Aparece en `s3 ls` (117 bytes) |
+| Descarga anónima (`--no-sign-request` y `curl`) | **Permitida** (HTTP 200) |
 | `get-bucket-policy` | `NoSuchBucketPolicy` |
 
 ### Resultado del acceso anónimo
 
-_Se completa al ejecutar el laboratorio._
+La descarga **sin firmar** del objeto funcionó (`aws --no-sign-request` y `curl` devolvieron el
+contenido, HTTP 200), aunque los cuatro controles de bloqueo están en `true`.
+
+En AWS real esta solicitud se rechazaría con `403 AccessDenied`: el bucket no tiene ninguna
+política ni ACL que dé acceso a usuarios anónimos. LocalStack, en cambio, **no evalúa IAM ni
+las políticas de acceso por defecto** (para eso existe `ENFORCE_IAM=1`, que es opcional y
+parcial): emula la API y guarda la configuración, pero no hace cumplir todas las reglas de
+autorización. Por eso este resultado se trata como una **limitación del simulador**, no como
+una exposición real, hasta tener una validación independiente.
 
 ### `NoSuchBucketPolicy`
 

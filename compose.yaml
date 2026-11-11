@@ -13,7 +13,8 @@ services:
       - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN:?Define LOCALSTACK_AUTH_TOKEN en el archivo .env}
       - DEBUG=0
     healthcheck:
-      test: ["CMD", "curl", "-fsS", "http://localhost:4566/_localstack/health"]
+      # La imagen no trae curl: se consulta el endpoint de salud con Python.
+      test: ["CMD", "python3", "-c", "import urllib.request as u; u.urlopen('http://localhost:4566/_localstack/health', timeout=3)"]
       interval: 10s
       timeout: 5s
       retries: 10
